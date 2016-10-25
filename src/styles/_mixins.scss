@@ -1,0 +1,17 @@
+// mixinのファイル名には_をつけると吐き出されなくなる
+
+@mixin baseBox(){
+  width: 200px;
+  height: 60px;
+  color: #f0f;
+}
+
+@mixin baseComponent(){
+  transform: translate(0, 0);
+  .fuga{
+    display: block;
+    transform: translate(10px, 0);
+  }
+  @include baseBox();
+}
+

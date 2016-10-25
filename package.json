@@ -1,0 +1,20 @@
+{
+  "name": "gulp-postcss",
+  "version": "0.0.1",
+  "description": "gulpでpostcssを使う最小サンプル",
+  "scripts": {
+    "gulp": "gulp",
+    "dev": "npm run gulp dev"
+  },
+  "author": "takaaki watanabe",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "cssnano": "^3.8.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}

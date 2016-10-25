@@ -1,0 +1,19 @@
+@import './_mixins.scss';
+
+.baseBox{ @include baseBox }
+
+.hogeComponent{
+  @include baseComponent;
+  @extend .baseBox;
+
+  .fuga{
+    &.isFoo{
+      @extend .baseBox;
+    }
+    &.isBar{
+      @extend .baseBox;
+      color: #000;
+      background-color: #ff0000;
+    }
+  }
+}
