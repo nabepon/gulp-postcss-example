@@ -5,6 +5,7 @@ var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 var sourcemaps = require('gulp-sourcemaps');
 var webserver = require("gulp-webserver");
+var browserSync = require('browser-sync');
 
 // htmlのコンパイル。今回は単純にdestにコピーするだけ。
 gulp.task('html', function(){
@@ -25,18 +26,19 @@ gulp.task('css', function(){
 });
 
 // ファイル変更監視
-gulp.task('watch', function(){
+gulp.task('watch',function(){
   gulp.watch('./src/**/*', ['build']);
+  gulp.watch('./dest/**/*').on('change', browserSync.reload);
 });
 
 // dev server立ち上げ
-gulp.task("server", function() {
-  gulp.src('./')
-    .pipe(webserver({
-      livereload: true,
-      open: true,
-      directoryListing: true
-    }));
+gulp.task('server', function(){
+  browserSync.init({
+    server:{
+      baseDir:"./dest/",
+      index: "/html/index.html"
+    }
+  })
 });
 
 // compileをまとめたタスク
