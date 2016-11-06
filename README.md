@@ -1,5 +1,5 @@
 # Overview
-気軽にpostcssでsassするためのサンプル
+気軽にpostcssとsassするためのサンプル
 
 # init
 ```
@@ -11,4 +11,6 @@ npm install
 npm run dev
 ```
 
-`http://localhost:8000/dest/html/index.html`を開いてください
+自動でブラウザが起動します。  
+src配下のファイルを変更すると、  
+destフォルダに変換したファイルが吐き出されます。  
