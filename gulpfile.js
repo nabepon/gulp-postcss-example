@@ -56,5 +56,5 @@ gulp.task('server', function(){
 gulp.task('build', ['html', 'css']);
 gulp.task('devBuild', ['html', 'devCss']);
 
-// 起動タスク。devを実行すつとbuildとwatchとserverタスクを実行する。
+// 起動タスク。devを実行するとdevBuildとwatchとserverタスクを実行する。
 gulp.task("dev", ['devBuild', 'watch', 'server']);
