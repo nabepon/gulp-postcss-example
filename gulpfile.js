@@ -13,14 +13,24 @@ gulp.task('html', function(){
     .pipe(gulp.dest('./dest'));  // destフォルダに出す
 });
 
-// cssのコンパイル
+// cssのコンパイル(本番用)
 gulp.task('css', function(){
+  gulp.src('./src/**/*.scss')
+    .pipe(sass())
+    .pipe(postcss([
+      autoprefixer({ browsers: ['last 10 versions'] }),
+      cssnano() // CSSの圧縮
+    ]))
+    .pipe(gulp.dest('./dest'));
+});
+
+// cssのコンパイル(開発用)
+gulp.task('devCss', function(){
   gulp.src('./src/**/*.scss') // src配下のscssファイルに対して処理
     .pipe(sourcemaps.init()) // sourcemapの初期処理
     .pipe(sass()) // sassをcssに変換
     .pipe(postcss([ // PostCSSを使う。引数にpluginを配列で渡す。
       autoprefixer({ browsers: ['last 10 versions'] }) // 変換したcssに対してprefixを付与。対応バージョンを引数で渡す。
-      // ,cssnano() // cssを圧縮。見づらくなるので今回はコメントアウトしておく。
     ]))
     .pipe(sourcemaps.write()) // sourcemapをファイル内に書き出す
     .pipe(gulp.dest('./dest')); // もろもろ変換処理が終わったので、destフォルダにcssを書き出す。
@@ -44,6 +54,7 @@ gulp.task('server', function(){
 
 // compileをまとめたタスク。buildを実行するとhtmlとcssのタスクを実行する。
 gulp.task('build', ['html', 'css']);
+gulp.task('devBuild', ['html', 'devCss']);
 
 // 起動タスク。devを実行すつとbuildとwatchとserverタスクを実行する。
-gulp.task("dev", ['build', 'watch', 'server']);
+gulp.task("dev", ['devBuild', 'watch', 'server']);

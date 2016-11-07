@@ -4,7 +4,8 @@
   "description": "gulpでpostcssを使う最小サンプル",
   "scripts": {
     "gulp": "gulp",
-    "dev": "npm run gulp dev"
+    "dev": "gulp dev",
+    "build": "gulp build"
   },
   "author": "takaaki watanabe",
   "homepage": "https://github.com/nabepon/gulp-postcss-example",
