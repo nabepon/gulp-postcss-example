@@ -38,7 +38,7 @@ gulp.task('devCss', function(){
 
 // ファイル変更監視
 gulp.task('watch',function(){
-  gulp.watch('./src/**/*', ['build']); // src配下のフォルダに変更があったら gulp.task('build') を実行
+  gulp.watch('./src/**/*', ['devBuild']); // src配下のフォルダに変更があったら gulp.task('build') を実行
   gulp.watch('./dest/**/*').on('change', browserSync.reload); // dest配下のフォルダに変更があったらブラウザリロード
 });
 
