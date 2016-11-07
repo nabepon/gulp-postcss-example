@@ -25,7 +25,7 @@ gulp.task('css', function(){
 });
 
 // cssのコンパイル(開発用)
-gulp.task('devCss', function(){
+gulp.task('css:dev', function(){
   gulp.src('./src/**/*.scss') // src配下のscssファイルに対して処理
     .pipe(sourcemaps.init()) // sourcemapの初期処理
     .pipe(sass()) // sassをcssに変換
@@ -38,7 +38,7 @@ gulp.task('devCss', function(){
 
 // ファイル変更監視
 gulp.task('watch',function(){
-  gulp.watch('./src/**/*', ['devBuild']); // src配下のフォルダに変更があったら gulp.task('build') を実行
+  gulp.watch('./src/**/*', ['build:dev']); // src配下のフォルダに変更があったら gulp.task('build') を実行
   gulp.watch('./dest/**/*').on('change', browserSync.reload); // dest配下のフォルダに変更があったらブラウザリロード
 });
 
@@ -54,7 +54,7 @@ gulp.task('server', function(){
 
 // compileをまとめたタスク。buildを実行するとhtmlとcssのタスクを実行する。
 gulp.task('build', ['html', 'css']);
-gulp.task('devBuild', ['html', 'devCss']);
+gulp.task('build:dev', ['html', 'css:dev']);
 
 // 起動タスク。devを実行するとdevBuildとwatchとserverタスクを実行する。
-gulp.task("dev", ['devBuild', 'watch', 'server']);
+gulp.task("dev", ['build:dev', 'watch', 'server']);
