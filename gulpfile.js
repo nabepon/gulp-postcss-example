@@ -19,8 +19,8 @@ gulp.task('css', function(){
     .pipe(sourcemaps.init()) // sourcemapの初期処理
     .pipe(sass()) // sassをcssに変換
     .pipe(postcss([ // PostCSSを使う。引数にpluginを配列で渡す。
-      autoprefixer({ browsers: ['last 10 versions'] }), // 変換したcssに対してprefixを付与。対応バージョンを引数で渡す。
-      // cssnano() // cssを圧縮。見づらくなるので今回はコメントアウトしておく。
+      autoprefixer({ browsers: ['last 10 versions'] }) // 変換したcssに対してprefixを付与。対応バージョンを引数で渡す。
+      // ,cssnano() // cssを圧縮。見づらくなるので今回はコメントアウトしておく。
     ]))
     .pipe(sourcemaps.write()) // sourcemapをファイル内に書き出す
     .pipe(gulp.dest('./dest')); // もろもろ変換処理が終わったので、destフォルダにcssを書き出す。
